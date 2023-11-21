@@ -1,14 +1,20 @@
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
+import { View } from '../../components/Themed';
+import {useState} from 'react';
+import Map from '../../components/Map';
+import SlidingPanel from '../../components/SlidingPanel';
 
 export default function TabTwoScreen() {
+  const [destination, setDestination] = useState({from: '', to: ''});
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
+      <Map destination={destination} setDestination={setDestination} />
+      <SlidingPanel
+        destination={destination}
+        setDestination={setDestination}
+      />
     </View>
   );
 }

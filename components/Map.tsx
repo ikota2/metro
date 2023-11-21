@@ -1,7 +1,6 @@
-import React, {FC, useState} from 'react';
-import { StyleSheet, View, Dimensions, ScrollView, Text } from 'react-native';
+import React from 'react';
+import { StyleSheet, Dimensions, View } from 'react-native';
 import Svg, { Circle, Rect, G } from 'react-native-svg';
-import {yellow} from 'colorette';
 
 const deviceSize = Dimensions.get('window');
 const locations = [
@@ -32,13 +31,12 @@ const locations = [
   },
 ];
 
-interface SvgFProps {
+interface MapProps {
   destination: { from: string, to: string };
   setDestination: React.Dispatch<React.SetStateAction<{from: string, to: string}>>;
 }
 
-const SvgF: FC<SvgFProps> = ({ destination, setDestination }) => {
-  // const [log, setLog] = useState([]);
+export default function Map({ destination, setDestination }: MapProps) {
   const { from, to } = destination
   function handleLocationClick(id: string) {
     if (!from || (from && to)) {
@@ -46,20 +44,14 @@ const SvgF: FC<SvgFProps> = ({ destination, setDestination }) => {
     } else {
       setDestination({ ...destination, to: id });
     }
-  };
+  }
 
   const determineFillColor = (id: string) => {
     if (id === from || id === to) {
-      return 'green'; // Selected station color
+      return 'green';
     }
-    return 'yellow'; // Default color
+    return 'yellow';
   };
-
-  // const renderLog = () => {
-  //   return log.map((item, index) => (
-  //     <Text key={index}>{item || '--outside click--'}</Text>
-  //   ));
-  // };
 
   return (
     <View style={styles.container}>
@@ -95,10 +87,6 @@ const SvgF: FC<SvgFProps> = ({ destination, setDestination }) => {
           </G>
         </Svg>
       </View>
-      {/*<ScrollView>{renderLog()}</ScrollView>*/}
-      {/*{from?.length > 0 && to?.length > 0 && <View>*/}
-      {/*  <Text>`${from} ${to}`</Text>*/}
-      {/*</View>}*/}
     </View>
   );
 };
@@ -110,5 +98,3 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
 });
-
-export default SvgF;
