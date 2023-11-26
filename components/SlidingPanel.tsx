@@ -1,28 +1,25 @@
-import React, {FC, useRef, useState} from 'react';
-import {View, Animated, PanResponder, Dimensions, StyleSheet, TextInput} from 'react-native';
+import React, { FC } from 'react';
+import { View, Dimensions, StyleSheet, TextInput } from 'react-native';
+import {SelectedDetails} from '../types';
 
 const windowHeight = Dimensions.get('window').height;
 const panelHeight = windowHeight * 0.1; // Panel height (20% of the screen)
 
 interface SlidingPanelProps {
-  destination: { from: string, to: string };
-  setDestination: React.Dispatch<React.SetStateAction<{from: string, to: string}>>;
+  selectedDetails: SelectedDetails;
+  handlers: {
+    handleFromChange: (stationName: string) => void;
+    handleToChange: (stationName: string) => void;
+  };
 }
-const SlidingPanel: FC<SlidingPanelProps> = ({destination, setDestination, }) => {
-  const { from, to } = destination;
-
-  const handleFromChange = (station: string) => {
-    setDestination(prevState => ({ ...prevState, from: station }));
-  };
-
-  const handleToChange = (station: string) => {
-    setDestination(prevState => ({ ...prevState, to: station }));
-  };
+const SlidingPanel: FC<SlidingPanelProps> = ({selectedDetails, handlers, }) => {
+  const { handleFromChange, handleToChange } = handlers;
+  const { selectedNameFrom, selectedNameTo } = selectedDetails;
 
   return (
     <View style={styles.panel}>
-      <TextInput style={styles.input} placeholder="From" value={from} onChangeText={handleFromChange} />
-      <TextInput style={styles.input} placeholder="To" value={to} onChangeText={handleToChange} />
+      <TextInput style={styles.input} placeholder="From" value={selectedNameFrom} onChangeText={handleFromChange} />
+      <TextInput style={styles.input} placeholder="To" value={selectedNameTo} onChangeText={handleToChange} />
     </View>
   );
 };
