@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { useState } from 'react';
 
 import { View } from '../../components/Themed';
-import SvgF from '../../components/SvgF';
+import Map from '../../components/Map';
 import SlidingPanel from '../../components/SlidingPanel';
 
 export default function TabThreeScreen() {
@@ -10,7 +10,7 @@ export default function TabThreeScreen() {
 
   return (
     <View style={styles.container}>
-      <SvgF destination={destination} setDestination={setDestination} />
+      <Map destination={destination} setDestination={setDestination} />
       <SlidingPanel
         destination={destination}
         setDestination={setDestination}
