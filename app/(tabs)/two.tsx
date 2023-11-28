@@ -1,44 +1,15 @@
-import React, {useMemo, useState} from 'react';
+import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native';
-import MapView, {Circle, MapPressEvent, Polyline} from 'react-native-maps';
-import getDistance from 'geolib/es/getDistance';
-import stationData from '../../assets/stations.json';
-import {SelectedDetails, Station} from '../../types';
-import SlidingPanel from '../../components/SlidingPanel';
+import MapView, { Circle, Polyline } from 'react-native-maps';
 
-const stationColors: any = {
-  'L1': 'red',
-  'L2': 'purple',
-  'L3': 'green',
-  'L4': 'yellow',
-  'L5': 'blue',
-  'L9S': 'orange',
-  'L9N': 'orange',
-  'L10N': 'aquamarine',
-  'L10S': 'aquamarine',
-  'L11': 'lightgreen',
-  'FM': 'darkgreen',
-};
-const getColorByPicto = (picto: string): string => {
-  return stationColors[picto] || 'gray';
-};
+import SlidingPanel from '../../components/SlidingPanel';
+import useMapInteraction from '../../hooks/useMapInteraction';
+import { barcelonaLocation, getColorByPicto, stations } from '../../utils';
+import { Station } from '../../types';
 
 const TabTwoScreen = () => {
-  const [selectedDetails, setSelectedDetails] = useState<SelectedDetails>({
-    selectedIdFrom: null,
-    selectedIdTo: null,
-    selectedNameFrom: '',
-    selectedNameTo: ''
-  });
-
-  const stations: Station[] = stationData.features.map(feature => ({
-    id: feature.id,
-    name: feature.properties.NOM_ESTACIO,
-    latitude: feature.geometry.coordinates[1],
-    longitude: feature.geometry.coordinates[0],
-    picto: feature.properties.PICTO,
-  }));
+  const { selectedDetails, handleMapPress, handlers } = useMapInteraction(stations);
 
   const lines = useMemo(() => {
     const tempLines: { [key: string]: Station[] } = {};
@@ -52,94 +23,6 @@ const TabTwoScreen = () => {
     return tempLines;
   }, [stations]);
 
-  function handleMapPress(event: MapPressEvent) {
-    const { latitude, longitude } = event.nativeEvent.coordinate;
-    let isZoneSelected = false;
-
-    stations.forEach(station => {
-      const distance = getDistance(
-        { latitude, longitude },
-        { latitude: station.latitude, longitude: station.longitude }
-      );
-
-      if (distance <= 15) {
-        isZoneSelected = true;
-        handleLocationClick(station.name, station.id);
-      }
-    });
-
-    if (!isZoneSelected) {
-      setSelectedDetails({ ...selectedDetails, selectedIdFrom: null, selectedIdTo: null });
-    }
-  }
-
-  function handleLocationClick(stationName: string, stationId: string) {
-    //  If the same station is selected as in 'from' or in 'to'
-    if (selectedDetails.selectedNameFrom === stationName || selectedDetails.selectedNameTo === stationName) {
-      if (selectedDetails.selectedNameFrom === stationName) {
-        // Clear 'from' if the same station is selected again
-        setSelectedDetails({
-          ...selectedDetails,
-          selectedIdFrom: null,
-          selectedNameFrom: ''
-        });
-      } else {
-        // Move 'to' to 'from' and clear 'to' if the same station in 'to' is selected again
-        setSelectedDetails({
-          selectedIdFrom: stationId,
-          selectedNameFrom: stationName,
-          selectedIdTo: null,
-          selectedNameTo: ''
-        });
-      }
-    }
-    // If both 'from' and 'to' are already selected, start over with the new station in 'from'
-    else if (selectedDetails.selectedNameFrom && selectedDetails.selectedNameTo) {
-      setSelectedDetails({
-        selectedIdFrom: stationId,
-        selectedNameFrom: stationName,
-        selectedIdTo: null,
-        selectedNameTo: ''
-      });
-    }
-    // If only 'from' is selected
-    else if (selectedDetails.selectedNameFrom && !selectedDetails.selectedNameTo) {
-      setSelectedDetails({
-        ...selectedDetails,
-        selectedIdTo: stationId,
-        selectedNameTo: stationName
-      });
-    }
-    // If nothing is selected, set the station in 'from'
-    else {
-      setSelectedDetails({
-        selectedIdFrom: stationId,
-        selectedNameFrom: stationName,
-        selectedIdTo: null,
-        selectedNameTo: ''
-      });
-    }
-  }
-
-  const handlers = {
-    handleFromChange: (stationName: string) => {
-      const station = stations.find(station => station.name === stationName);
-      setSelectedDetails({
-        ...selectedDetails,
-        selectedNameFrom: stationName,
-        selectedIdFrom: station ? station.id : null,
-      });
-    },
-    handleToChange: (stationName: string) => {
-      const station = stations.find(station => station.name === stationName);
-      setSelectedDetails({
-        ...selectedDetails,
-        selectedNameTo: stationName,
-        selectedIdTo: station ? station.id : null,
-      });
-    }
-  };
-
   return (
     <View style={styles.container}>
       <MapView
@@ -147,12 +30,7 @@ const TabTwoScreen = () => {
         showsUserLocation={true}
         zoomEnabled={true}
         zoomTapEnabled={true}
-        initialRegion={{
-          latitude: 41.3851,
-          longitude: 2.1734,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
+        initialRegion={barcelonaLocation}
         onPress={handleMapPress}
       >
         {Object.keys(lines).map(line => (

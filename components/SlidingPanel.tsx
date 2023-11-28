@@ -8,9 +8,9 @@ const panelHeight = windowHeight * 0.1; // Panel height (20% of the screen)
 interface SlidingPanelProps {
   selectedDetails: SelectedDetails;
   handlers: {
-    handleFromChange: (stationName: string) => void;
-    handleToChange: (stationName: string) => void;
-  };
+    handleFromChange: (stationName: string) => void,
+    handleToChange: (stationName: string) => void
+  }
 }
 const SlidingPanel: FC<SlidingPanelProps> = ({selectedDetails, handlers, }) => {
   const { handleFromChange, handleToChange } = handlers;

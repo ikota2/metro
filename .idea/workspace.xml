@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66bc9895-1877-4625-9032-041c00047064" name="Changes" comment="TransferStation">
+    <list default="true" id="66bc9895-1877-4625-9032-041c00047064" name="Changes" comment="SelectedDetails to types">
+      <change afterPath="$PROJECT_DIR$/hooks/useMapInteraction.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/stations.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/two.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/two.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/stationColors.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/SlidingPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SlidingPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +76,7 @@
       <workItem from="1699111388993" duration="3346000" />
       <workItem from="1699121263193" duration="5672000" />
       <workItem from="1699709297901" duration="12998000" />
-      <workItem from="1700993301394" duration="6487000" />
+      <workItem from="1700993301394" duration="9445000" />
     </task>
     <task id="LOCAL-00001" summary="dependencies">
       <created>1700963115116</created>
@@ -119,7 +120,28 @@
       <option name="project" value="LOCAL" />
       <updated>1700963266982</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="geolib installed">
+      <created>1701012762813</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1701012762813</updated>
+    </task>
+    <task id="LOCAL-00008" summary="connection between map and sliding panel">
+      <created>1701012998477</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1701012998477</updated>
+    </task>
+    <task id="LOCAL-00009" summary="SelectedDetails to types">
+      <created>1701013018246</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1701013018246</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +165,9 @@
     <MESSAGE value="refactoring" />
     <MESSAGE value="map" />
     <MESSAGE value="TransferStation" />
-    <option name="LAST_COMMIT_MESSAGE" value="TransferStation" />
+    <MESSAGE value="geolib installed" />
+    <MESSAGE value="connection between map and sliding panel" />
+    <MESSAGE value="SelectedDetails to types" />
+    <option name="LAST_COMMIT_MESSAGE" value="SelectedDetails to types" />
   </component>
 </project>
