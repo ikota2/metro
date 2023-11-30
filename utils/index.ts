@@ -1,6 +1,5 @@
 import { stations } from './stations';
 import {Neighbour, Station} from '../types';
-
 const getColorByPicto = (picto: string): string => {
   return stationColors[picto] || 'gray';
 };
@@ -74,11 +73,13 @@ export const createLinesData = (stations: Station[]) => {
 const stationsWithNeighbours = addNeighbours(stations);
 const lines = createLinesData(stationsWithNeighbours);
 
+
+
 export {
   getColorByPicto,
   splitPicto,
   stations,
   barcelonaLocation,
   stationsWithNeighbours,
-  lines
+  lines,
 }

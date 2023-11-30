@@ -3,7 +3,7 @@ import { View, Dimensions, StyleSheet, TextInput } from 'react-native';
 import {SelectedDetails} from '../types';
 
 const windowHeight = Dimensions.get('window').height;
-const panelHeight = windowHeight * 0.1; // Panel height (20% of the screen)
+const panelHeight = windowHeight * 0.1;
 
 interface SlidingPanelProps {
   selectedDetails: SelectedDetails;
@@ -15,6 +15,12 @@ interface SlidingPanelProps {
 const SlidingPanel: FC<SlidingPanelProps> = ({selectedDetails, handlers, }) => {
   const { handleFromChange, handleToChange } = handlers;
   const { selectedNameFrom, selectedNameTo } = selectedDetails;
+
+  // TODO ids to names, wrong stations, autocomplete
+  // if (selectedNameFrom.length > 0 && selectedNameTo.length > 0) {
+  //   console.log(dijkstra(stationsWithNeighbours, selectedIdFrom, selectedIdTo));
+  //  LOG  {"path": ["ESTACIONS.318", "ESTACIONS.317", "ESTACIONS.316"], "time": 2}
+  // }
 
   return (
     <View style={styles.panel}>

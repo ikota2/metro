@@ -12,6 +12,11 @@ export interface Neighbour {
   timeInMinutes: number;
 }
 
+export interface Path {
+  distance: number;
+  path: string[];
+}
+
 export interface SelectedDetails {
   selectedIdFrom: string | null;
   selectedIdTo: string | null;
