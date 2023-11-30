@@ -4,6 +4,12 @@ export interface Station {
   picto: string;
   latitude: number;
   longitude: number;
+  neighbours: Neighbour[];
+}
+
+export interface Neighbour {
+  neighbourId: string;
+  timeInMinutes: number;
 }
 
 export interface SelectedDetails {

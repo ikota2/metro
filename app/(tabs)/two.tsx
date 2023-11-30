@@ -1,27 +1,14 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from 'react-native';
 import MapView, { Circle, Polyline } from 'react-native-maps';
 
 import SlidingPanel from '../../components/SlidingPanel';
 import useMapInteraction from '../../hooks/useMapInteraction';
-import { barcelonaLocation, getColorByPicto, stations } from '../../utils';
-import { Station } from '../../types';
+import { barcelonaLocation, getColorByPicto, lines, stations, stationsWithNeighbours } from '../../utils';
 
 const TabTwoScreen = () => {
   const { selectedDetails, handleMapPress, handlers } = useMapInteraction(stations);
-
-  const lines = useMemo(() => {
-    const tempLines: { [key: string]: Station[] } = {};
-    stations.forEach(station => {
-      const line = station.picto;
-      if (!tempLines[line]) {
-        tempLines[line] = [];
-      }
-      tempLines[line].push(station);
-    });
-    return tempLines;
-  }, [stations]);
 
   return (
     <View style={styles.container}>
@@ -41,7 +28,7 @@ const TabTwoScreen = () => {
             strokeWidth={2}
           />
         ))}
-        {stations.map(station => (
+        {stationsWithNeighbours.map(station => (
           <Circle
             key={station.id}
             center={{ latitude: station.latitude, longitude: station.longitude }}

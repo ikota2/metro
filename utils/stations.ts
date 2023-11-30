@@ -7,4 +7,6 @@ export const stations: Station[] = stationData.features.map(feature => ({
   latitude: feature.geometry.coordinates[1],
   longitude: feature.geometry.coordinates[0],
   picto: feature.properties.PICTO,
+  neighbours: []
 }));
+
