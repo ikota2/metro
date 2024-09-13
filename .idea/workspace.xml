@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66bc9895-1877-4625-9032-041c00047064" name="Changes" comment="mock neighbours added to stations">
-      <change afterPath="$PROJECT_DIR$/utils/dijkstra.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_11_2023__18_43__Changes_.xml" beforeDir="false" />
+    <list default="true" id="66bc9895-1877-4625-9032-041c00047064" name="Changes" comment="dijkstra">
+      <change afterPath="$PROJECT_DIR$/components/SlidingPanel2.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/three.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/three.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/two.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/two.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/SlidingPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SlidingPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useMapInteraction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useMapInteraction.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +77,11 @@
       <workItem from="1699111388993" duration="3346000" />
       <workItem from="1699121263193" duration="5672000" />
       <workItem from="1699709297901" duration="12998000" />
-      <workItem from="1700993301394" duration="16946000" />
+      <workItem from="1700993301394" duration="17405000" />
+      <workItem from="1701455374612" duration="154000" />
+      <workItem from="1725990986174" duration="1879000" />
+      <workItem from="1725993563764" duration="1096000" />
+      <workItem from="1726147108694" duration="772000" />
     </task>
     <task id="LOCAL-00001" summary="dependencies">
       <created>1700963115116</created>
@@ -154,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701361023027</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="dijkstra">
+      <created>1701369474256</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701369474256</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +195,7 @@
     <MESSAGE value="SelectedDetails to types" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="mock neighbours added to stations" />
-    <option name="LAST_COMMIT_MESSAGE" value="mock neighbours added to stations" />
+    <MESSAGE value="dijkstra" />
+    <option name="LAST_COMMIT_MESSAGE" value="dijkstra" />
   </component>
 </project>
